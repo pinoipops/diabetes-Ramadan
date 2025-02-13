@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Type 2 Diabetes Management During Ramadan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lexend', sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+        h1, h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        h2:hover {
+            color: #e74c3c;
+        }
+        .note {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-left: 5px solid #3498db;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-weight: 600;
+        }
+        tr {
+            transition: background-color 0.3s ease;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .example {
+            font-size: 0.9em;
+            color: #555;
+            margin-top: 5px;
+        }
+        .warning {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        .collapsible {
+            cursor: pointer;
+            padding: 10px;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 1.2rem;
+            transition: background-color 0.3s ease;
+        }
+        .collapsible:hover {
+            background-color: #f1f1f1;
+        }
+        .content {
+            padding: 0 18px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .brand-names {
+            font-size: 0.8em;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <h1>Type 2 Diabetes Management During Ramadan</h1>
+    <div class="note">
+        <strong>Important:</strong> All dose adjustments should be discussed with your healthcare provider. These are general guidelines and may need to be modified based on individual circumstances.
+    </div>
+
+    <h2 class="collapsible">Insulin Adjustments</h2>
+    <div class="content">
+        <table id="insulin-table">
+            <thead>
+                <tr>
+                    <th>Insulin Regimen</th>
+                    <th>Adjustments</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data will be populated by JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <h2 class="collapsible">Oral Therapy Adjustments</h2>
+    <div class="content">
+        <table id="oral-table">
+            <thead>
+                <tr>
+                    <th>Regimen</th>
+                    <th>Sunset Meal (Iftar)</th>
+                    <th>Pre-Dawn Meal (Sahur)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data will be populated by JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const insulinData = [
+                {
+                    regimen: "Basal Insulin Only",
+                    adjustments: "Basal insulin to be taken at bedtime or after waktu berbuka meals. May need dose reduction if there is a risk of daytime hypoglycemia.<div class='example'>Example: If usual dose is 20 units → Consider reducing to 15-16 units (20-25% reduction) during Ramadan</div>"
+                },
+                {
+                    regimen: "Premixed Insulin Once Daily",
+                    adjustments: "Inject usual dose at waktu berbuka meals.<div class='example'>Example: If taking 30 units in the morning before Ramadan → Take 30 units at waktu berbuka during Ramadan</div>"
+                },
+                {
+                    regimen: "Premixed Insulin Twice Daily",
+                    adjustments: "Reverse doses – Morning dose given at waktu berbuka and evening dose at waktu sahur. Insulin dose at waktu sahur reduced by 20-50% to prevent daytime hypoglycemia.<div class='example'>Example: If usual doses are 30 units morning + 20 units evening → During Ramadan:<br>- Waktu Berbuka: 30 units (morning dose)<br>- Waktu Sahur: 10-16 units (evening dose reduced by 20-50%)</div>"
+                },
+                {
+                    regimen: "Basal Bolus Insulin",
+                    adjustments: "Basal insulin: Taken at bedtime or any time after waktu berbuka meals. May require dose reduction if there is daytime hypoglycemia.<br>Bolus/Prandial insulin: Waktu Sahur – Usual pre-Ramadan breakfast or lunch dose. May require dose reduction to avoid daytime hypoglycemia. Waktu Berbuka – Usual pre-Ramadan dinner dose. May require dose increment.<div class='example'>Example for a patient on 40 units basal + 10 units with each meal:<br>During Ramadan:<br>- Basal: 30-32 units (20-25% reduction)<br>- Waktu Sahur: 7-8 units (20-25% reduction)<br>- Waktu Berbuka: 10-12 units (may need slight increase)</div>"
+                },
+                {
+                    regimen: "Insulin Pump",
+                    adjustments: "Basal insulin rate: Unchanged or may require reduction of up to 25%. Prandial bolus: According to individualized insulin to carbohydrate ratio (ICR).<div class='example'>Example: If basal rate is 1.0 units/hour → Consider reducing to 0.75-0.8 units/hour during fasting hours</div>"
+                }
+            ];
+
+            const oralData = [
+                {
+                    regimen: "α-glucosidase inhibitors<br><span class='brand-names'>Brand names: Glucobay (Acarbose), Glyset (Miglitol)</span>",
+                    iftar: "No changes<div class='example'>Take your usual dose with waktu berbuka meal</div>",
+                    sahur: "No changes<div class='example'>Take your usual dose with waktu sahur meal</div>"
+                },
+                {
+                    regimen: "Biguanides (Metformin)<br><span class='brand-names'>Brand names: Glucophage, Glumetza, Riomet, Fortamet</span>",
+                    iftar: "Immediate-release: No changes<br>Twice daily: No changes<br>Thrice daily: Take two thirds of daily dose<div class='example'>Examples:<br>- If usual dose is 3000mg daily (1000mg x 3) → Take 2000mg at waktu berbuka<br>- If usual dose is 2400mg daily (800mg x 3) → Take 1600mg at waktu berbuka<br>- If usual dose is 1500mg daily (500mg x 3) → Take 1000mg at waktu berbuka</div><br>Extended-release: Full dose",
+                    sahur: "Immediate-release: No changes<br>Twice daily: Take one third of daily dose<div class='example'>Examples:<br>- If usual dose is 2000mg daily (1000mg x 2) → Take 700mg at waktu sahur<br>- If usual dose is 1000mg daily (500mg x 2) → Take 350mg at waktu sahur</div><br>Thrice daily: No changes<br>Extended-release: None"
+                },
+                {
+                    regimen: "Dipeptidyl peptidase-4 inhibitors<br><span class='brand-names'>Brand names: Januvia (Sitagliptin), Onglyza (Saxagliptin), Tradjenta (Linagliptin), Galvus (Vildagliptin)</span>",
+                    iftar: "No changes<div class='example'>Take your usual once-daily dose with waktu berbuka meal</div>",
+                    sahur: "No changes<div class='warning'>If you take this medication twice daily, take your second dose with waktu sahur</div>"
+                },
+                {
+                    regimen: "Meglitinides<br><span class='brand-names'>Brand names: Prandin (Repaglinide), Starlix (Nateglinide)</span>",
+                    iftar: "No changes<div class='example'>Take your usual dose with waktu berbuka meal</div>",
+                    sahur: "No changes<div class='example'>Take your usual dose with waktu sahur meal</div>"
+                },
+                {
+                    regimen: "Sulphonylureas<br><span class='brand-names'>Brand names: Diabeta/Glynase (Glibenclamide), Diamicron (Gliclazide), Amaryl (Glimepiride)</span>",
+                    iftar: "Glibenclamide, Gliclazide: No changes<br>Gliclazide MR, Glimepiride: No changes<div class='example'>Examples:<br>- If taking Glimepiride 4mg daily → Take 4mg at waktu berbuka<br>- If taking Gliclazide MR 60mg daily → Take 60mg at waktu berbuka</div>",
+                    sahur: "Glibenclamide, Gliclazide: Reduce/omit<div class='example'>Examples:<br>- If taking Glibenclamide 5mg twice daily → Take 2.5mg at waktu sahur or skip dose<br>- If taking Gliclazide 80mg twice daily → Take 40mg at waktu sahur or skip dose</div><div class='warning'>Monitor blood sugar closely if reducing rather than omitting</div><br>Gliclazide MR, Glimepiride: Switch dosing to sunset meal"
+                },
+                {
+                    regimen: "Sodium glucose co-transporter 2 inhibitors<br><span class='brand-names'>Brand names: Invokana (Canagliflozin), Farxiga (Dapagliflozin), Jardiance (Empagliflozin)</span>",
+                    iftar: "No changes<div class='example'>Take your usual daily dose with waktu berbuka meal</div>",
+                    sahur: "Switch dosing to sunset meal<div class='warning'>Do not take at waktu sahur due to risk of dehydration during fasting</div>"
+                },
+                {
+                    regimen: "Thiazolidinediones<br><span class='brand-names'>Brand names: Actos (Pioglitazone), Avandia (Rosiglitazone)</span>",
+                    iftar: "No changes<div class='example'>Take your usual daily dose with waktu berbuka meal</div>",
+                    sahur: "None<div class='example'>These medications are usually taken once daily - take entire dose at waktu berbuka</div>"
+                }
+            ];
+
+            function populateTable(tableId, data) {
+                const tableBody = document.querySelector(`#${tableId} tbody`);
+                data.forEach(item => {
+                    const row = document.createElement('tr');
+
+                    const regimenCell = document.createElement('td');
+                    regimenCell.innerHTML = item.regimen;
+                    row.appendChild(regimenCell);
+
+                    if (tableId === 'insulin-table') {
+                        const adjustmentsCell = document.createElement('td');
+                        adjustmentsCell.innerHTML = item.adjustments;
+                        row.appendChild(adjustmentsCell);
+                    } else {
+                        const iftarCell = document.createElement('td');
+                        iftarCell.innerHTML = item.iftar;
+                        row.appendChild(iftarCell);
+
+                        const sahurCell = document.createElement('td');
+                        sahurCell.innerHTML = item.sahur;
+                        row.appendChild(sahurCell);
+                    }
+
+                    tableBody.appendChild(row);
+                });
+            }
+
+            // Populate tables
+            populateTable('insulin-table', insulinData);
+            populateTable('oral-table', oralData);
+
+            // Collapsible sections
+            const collapsibles = document.querySelectorAll('.collapsible');
+            collapsibles.forEach(collapsible => {
+                collapsible.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    const content = this.nextElementSibling;
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
