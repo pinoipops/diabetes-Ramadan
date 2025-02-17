@@ -4,128 +4,154 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Type 2 Diabetes Management During Ramadan</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Lexend:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+        /* CSS Reset */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        /* CSS Variables */
+        :root {
+            --primary-color: #206a5d;
+            --secondary-color: #81b29a;
+            --background-color: #f2f4f3;
+            --text-color: #343a40;
+            --heading-color: #212529;
+            --accent-color: #dc3545;
+            --neutral-color: #d3d3d3;
+            --font-family-body: 'Roboto', sans-serif;
+            --font-family-heading: 'Lexend', sans-serif;
         }
 
         body {
-            font-family: 'Lexend', sans-serif;
-            padding: 15px;
+            font-family: var(--font-family-body);
+            color: var(--text-color);
             line-height: 1.6;
-            color: #333;
-            max-width: 100%;
-            overflow-x: hidden;
+            padding: 20px;
+            background-color: var(--background-color);
         }
 
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Headings */
         h1, h2 {
-            color: #2c3e50;
-            margin-bottom: 20px;
+            font-family: var(--font-family-heading);
+            color: var(--heading-color);
         }
 
-        h1 {
-            font-size: clamp(1.5rem, 5vw, 2.5rem);
-            font-weight: 700;
-        }
-
+        h1 { font-size: 2.5rem; margin-bottom: 20px; }
         h2 {
-            font-size: clamp(1.2rem, 4vw, 2rem);
-            font-weight: 600;
-            padding: 10px;
-            background: #f8f9fa;
-            border-radius: 5px;
-            margin-top: 20px;
+            font-size: 1.8rem;
+            padding: 12px 20px;
+            background-color: var(--background-color);
+            border-radius: 8px;
+            margin-top: 25px;
+            cursor: pointer;
+            border: 1px solid var(--neutral-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
+        /* Note */
         .note {
             background-color: #f9f9f9;
             padding: 15px;
-            border-left: 5px solid #3498db;
+            border-left: 5px solid var(--primary-color);
             margin: 15px 0;
             border-radius: 5px;
             font-size: 0.9rem;
         }
 
+        /* Section Card */
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid var(--neutral-color);
+        }
+
+        /* Table styles */
         .table-container {
-            width: 100%;
             overflow-x: auto;
-            margin: 15px 0;
-            -webkit-overflow-scrolling: touch;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 20px;
-            background: white;
         }
 
         th, td {
             padding: 12px;
             text-align: left;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px solid var(--neutral-color);
             min-width: 120px;
         }
 
         th {
-            background-color: #3498db;
+            background-color: var(--primary-color);
             color: white;
-            font-weight: 600;
-            white-space: nowrap;
+            font-weight: 500;
         }
 
+        /* Zebra striping for tables */
+        tbody tr:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+
+        /* Responsive Table */
         @media screen and (max-width: 768px) {
-            .table-responsive {
-                display: block;
-            }
-
-            .table-responsive tbody {
-                display: block;
-            }
-
-            .table-responsive tr {
-                display: block;
+            table { border: 0; }
+            thead { display: none; }
+            tr {
                 margin-bottom: 1rem;
-                border: 1px solid #ddd;
+                border: 1px solid var(--neutral-color);
                 border-radius: 5px;
                 padding: 0.5rem;
+                display: block;
             }
 
-            .table-responsive td {
+            td {
                 display: block;
                 text-align: left;
                 padding: 8px;
                 border: none;
                 border-bottom: 1px solid #eee;
+                position: relative;
+                padding-left: 50%;
             }
 
-            .table-responsive td:last-child {
-                border-bottom: none;
-            }
-
-            .table-responsive td::before {
+            td::before {
                 content: attr(data-label);
+                position: absolute;
+                left: 0;
+                width: 50%;
+                padding-left: 8px;
                 font-weight: bold;
-                display: block;
-                margin-bottom: 5px;
-                color: #3498db;
+                line-height: 1.5;
+                color: var(--primary-color);
             }
         }
 
+        /* Example, Warning, and Medication Styles */
         .example {
             font-size: 0.85em;
             color: #555;
             margin-top: 5px;
             padding: 8px;
-            background: #f8f9fa;
+            background-color: #e9ecef;  /* Light background for highlighting examples */
             border-radius: 4px;
         }
 
         .warning {
-            color: #e74c3c;
+            color: var(--accent-color);
             font-weight: bold;
             padding: 8px;
             margin: 5px 0;
@@ -134,78 +160,202 @@
         }
 
         .medication-name {
-            color: #9b59b6;
-            font-weight: 500;
+            color: var(--primary-color);
+            font-weight: 600;
         }
 
         .brand-names {
             font-size: 0.8em;
-            color: #8e44ad;
+            color: var(--secondary-color);
             display: block;
             margin-top: 5px;
         }
 
-        .collapsible {
-            width: 100%;
+        /* Collapsible Styles */
+       .collapsible {
+             width: 100%;
             padding: 15px;
             border: none;
             text-align: left;
             outline: none;
             font-size: 1.1rem;
-            background: #f8f9fa;
+            background: var(--background-color);
             border-radius: 5px;
             margin: 10px 0;
             cursor: pointer;
+            display: flex;
+            justify-content: space-between; /* Added to align arrow to the right */
+            align-items: center;       /* Vertically align items */
+        }
+
+        .collapsible::after {
+             content: '\25BE'; /* Down arrow */
+            font-size: 1.2em;
+        }
+
+        .collapsible.active::after {
+            content: '\25B4'; /* Up arrow */
+        }
+        .collapsible i {
+            margin-left: 5px; /* Space between text and icon */
         }
 
         .content {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease-out;
+            padding: 0 15px;
         }
 
-        .active {
-            background: #e9ecef;
+        .content p {
+            margin-bottom: 10px;
+        }
+
+        /* List Styles */
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
         }
     </style>
 </head>
 <body>
-    <h1>Type 2 Diabetes Management During Ramadan</h1>
-    
-    <div class="note">
-        <strong>Important:</strong> All dose adjustments should be discussed with your healthcare provider. These are general guidelines and may need to be modified based on individual circumstances.
-    </div>
+    <div class="container">
+        <h1>Type 2 Diabetes Management During Ramadan</h1>
 
-    <h2 class="collapsible">Insulin Adjustments</h2>
-    <div class="content">
-        <div class="table-container">
-            <table class="table-responsive" id="insulin-table">
-                <thead>
-                    <tr>
-                        <th>Insulin Type</th>
-                        <th>Adjustments</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
+        <div class="note">
+            <strong>Important:</strong> All dose adjustments should be discussed with your healthcare provider. These are general guidelines and may need to be modified based on individual circumstances. This information is not a substitute for professional medical advice.
         </div>
-    </div>
 
-    <h2 class="collapsible">Oral Therapy Adjustments</h2>
-    <div class="content">
-        <div class="table-container">
-            <table class="table-responsive" id="oral-table">
-                <thead>
-                    <tr>
-                        <th>Medication</th>
-                        <th>Sunset Meal (Iftar)</th>
-                        <th>Pre-Dawn Meal (Sahur)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
+        <div class="card">
+            <h2 class="collapsible">
+                Insulin Adjustments
+                <i class="fas fa-chevron-down"></i>
+            </h2>
+            <div class="content">
+                <div class="table-container">
+                    <table id="insulin-table">
+                        <caption>Insulin Adjustment Guidelines</caption>
+                        <thead>
+                            <tr>
+                                <th>Insulin Type</th>
+                                <th>Adjustments</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="collapsible">
+                Oral Therapy Adjustments
+                <i class="fas fa-chevron-down"></i>
+            </h2>
+            <div class="content">
+                <div class="table-container">
+                    <table id="oral-table">
+                        <caption>Oral Therapy Adjustment Guidelines</caption>
+                        <thead>
+                            <tr>
+                                <th>Medication</th>
+                                <th>Sunset Meal (Berbuka)</th>
+                                <th>Pre-Dawn Meal (Sahur)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="collapsible">
+                Dietary Recommendations
+                <i class="fas fa-chevron-down"></i>
+            </h2>
+            <div class="content">
+                <p>Focus on balanced meals with complex carbohydrates, lean protein, and healthy fats.</p>
+                <ul>
+                    <li><strong>Berbuka (Breaking the Fast):</strong> Start with dates and water. Include a balanced meal with protein (grilled chicken, fish, beans), complex carbohydrates (whole grains, brown rice), and plenty of vegetables. Avoid fried and sugary foods.</li>
+                    <li><strong>Sahur (Pre-Dawn Meal):</strong> Choose slow-digesting foods like oats, whole-wheat bread, yogurt, and nuts to provide sustained energy throughout the day. Drink plenty of water.</li>
+                    <li><strong>Snacks (between Berbuka and Sahur):</strong> If needed, choose healthy snacks like fruits, vegetables with hummus, or a small handful of nuts.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="collapsible">
+                Blood Glucose Monitoring
+                <i class="fas fa-chevron-down"></i>
+            </h2>
+            <div class="content">
+                <p>Monitor your blood glucose levels more frequently during Ramadan, especially:</p>
+                <ul>
+                    <li>Before Berbuka</li>
+                    <li>2 hours after Berbuka</li>
+                    <li>Before Sahur</li>
+                    <li>Mid-day</li>
+                    <li>Any time you feel symptoms of hypoglycemia or hyperglycemia</li>
+                </ul>
+                <p>Consult your healthcare provider for personalized blood glucose targets and action plans.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="collapsible">
+                Hypoglycemia Management
+                <i class="fas fa-chevron-down"></i>
+            </h2>
+            <div class="content">
+                <p>Recognize the symptoms of hypoglycemia (low blood sugar): shakiness, sweating, dizziness, confusion, rapid heartbeat.</p>
+                <p>If you experience hypoglycemia:</p>
+                <ul>
+                    <li>Check your blood glucose level.</li>
+                    <li>If your blood glucose is below 70 mg/dL (3.9 mmol/L), consume 15-20 grams of fast-acting carbohydrates (e.g., glucose tablets, fruit juice, regular soda).</li>
+                    <li>Recheck your blood glucose level after 15 minutes.</li>
+                    <li>If your blood glucose is still low, repeat the treatment.</li>
+                    <li>Once your blood glucose is back to normal, have a small snack with protein and complex carbohydrates.</li>
+                </ul>
+                <p class="warning">If you experience severe hypoglycemia or are unable to treat yourself, seek immediate medical attention.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="collapsible">
+                Exercise During Ramadan
+                <i class="fas fa-chevron-down"></i>
+            </h2>
+            <div class="content">
+                <p>Maintain a moderate level of physical activity during Ramadan.</p>
+                <ul>
+                    <li>Avoid strenuous exercise during fasting hours.</li>
+                    <li>Engage in light activities like walking or stretching.</li>
+                    <li>If you exercise, monitor your blood glucose levels closely before, during, and after exercise.</li>
+                    <li>Stay hydrated by drinking plenty of water during non-fasting hours.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="collapsible">
+                Hydration
+                <i class="fas fa-chevron-down"></i>
+            </h2>
+            <div class="content">
+                <p>Dehydration can significantly impact blood glucose levels. Ensure adequate hydration during non-fasting hours.</p>
+                <ul>
+                    <li>Drink plenty of water between Berbuka and Sahur.</li>
+                    <li>Avoid sugary drinks, which can lead to rapid blood glucose spikes.</li>
+                    <li>Consider incorporating hydrating foods like fruits and vegetables into your meals.</li>
+                </ul>
+            </div>
         </div>
     </div>
 
@@ -272,38 +422,29 @@
                 }
             ];
 
+            function createTableRow(tableId, item) {
+                const row = document.createElement('tr');
+
+                if (tableId === 'insulin-table') {
+                    row.innerHTML = `
+                        <td data-label="Insulin Type">${item.regimen}</td>
+                        <td data-label="Adjustments">${item.adjustments}</td>
+                    `;
+                } else {
+                    row.innerHTML = `
+                        <td data-label="Medication">${item.regimen}</td>
+                        <td data-label="Sunset Meal (Berbuka)">${item.iftar.replace(/Iftar/g, 'Berbuka')}</td>
+                        <td data-label="Pre-Dawn Meal (Sahur)">${item.sahur}</td>
+                    `;
+                }
+
+                return row;
+            }
+
             function populateTable(tableId, data) {
                 const tableBody = document.querySelector(`#${tableId} tbody`);
                 data.forEach(item => {
-                    const row = document.createElement('tr');
-
-                    if (tableId === 'insulin-table') {
-                        const regimenCell = document.createElement('td');
-                        regimenCell.setAttribute('data-label', 'Insulin Type');
-                        regimenCell.innerHTML = item.regimen;
-                        row.appendChild(regimenCell);
-
-                        const adjustmentsCell = document.createElement('td');
-                        adjustmentsCell.setAttribute('data-label', 'Adjustments');
-                        adjustmentsCell.innerHTML = item.adjustments;
-                        row.appendChild(adjustmentsCell);
-                    } else {
-                        const regimenCell = document.createElement('td');
-                        regimenCell.setAttribute('data-label', 'Medication');
-                        regimenCell.innerHTML = item.regimen;
-                        row.appendChild(regimenCell);
-
-                        const iftarCell = document.createElement('td');
-                        iftarCell.setAttribute('data-label', 'Sunset Meal (Iftar)');
-                        iftarCell.innerHTML = item.iftar;
-                        row.appendChild(iftarCell);
-
-                        const sahurCell = document.createElement('td');
-                        sahurCell.setAttribute('data-label', 'Pre-Dawn Meal (Sahur)');
-                        sahurCell.innerHTML = item.sahur;
-                        row.appendChild(sahurCell);
-                    }
-
+                    const row = createTableRow(tableId, item);
                     tableBody.appendChild(row);
                 });
             }
@@ -312,13 +453,11 @@
             populateTable('oral-table', oralData);
 
             const collapsibles = document.querySelectorAll('.collapsible');
-            collapsibles.forEach(coll => {
-                coll.addEventListener('click', function() {
+            collapsibles.forEach(collapsible => {
+                collapsible.addEventListener('click', function() {
                     this.classList.toggle('active');
                     const content = this.nextElementSibling;
-                    content.style.maxHeight = content.style.maxHeight 
-                        ? null 
-                        : content.scrollHeight + "px";
+                    content.style.maxHeight = this.classList.contains('active') ? content.scrollHeight + "px" : null;
                 });
             });
         });
